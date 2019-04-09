@@ -6,14 +6,13 @@ import (
 )
 
 /*
-
+go test 18_concatBenchmarking.go 18_concatBenchmarking_test.go -bench=.
+go test 18_concatBenchmarking.go 18_concatBenchmarking_test.go  -bench=. -benchmem -memprofile mem.out -cpuprofile cpu.out
 go tool pprof cpu.out
 $ top
 go tool pprof mem.out
 $ top
-go test -bench=. -benchmem -memprofile mem.out -cpuprofile cpu.out
 go test -bench=. -cpu 1,2,4
-
  */
 
 func Test_concatSPrintf(t *testing.T) {
