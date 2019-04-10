@@ -19,4 +19,6 @@ func main() {
 	*str2 = "D"
 	fmt.Println(str1)
 	fmt.Println(*str2)
+
+
 }
