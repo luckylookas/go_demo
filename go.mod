@@ -25,4 +25,9 @@ require (
 	gopkg.in/ory-am/dockertest.v3 v3.3.4
 	gotest.tools v2.2.0+incompatible
 	mellium.im/sasl v0.2.1 // indirect
+	github.com/elastic/go-elasticsearch/v6 v6.0.0-20190409071335-689d698a888b
+	github.com/stretchr/testify v1.3.0 // indirect
+	github.com/tidwall/gjson v1.2.1
+	github.com/tidwall/match v1.0.1 // indirect
+	github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65 // indirect
 )

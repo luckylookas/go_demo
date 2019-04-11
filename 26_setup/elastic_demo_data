@@ -1,0 +1,41 @@
+PUT my_index
+{
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "city": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type":  "keyword"
+            },
+            "fts": {
+              "type": "text",
+              "analyzer": "english"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT my_index/_doc/1
+{
+  "city": "some kind of city with gardens, we will never know what that is about. Maybe it is some kind of tradition for them."
+}
+
+GET my_index/_search
+{
+  "query": {
+    "match": {
+      "city": {
+        "query":"garden"
+        , "fuzziness": 2
+      }
+    }
+  }
+}
+
+
+
