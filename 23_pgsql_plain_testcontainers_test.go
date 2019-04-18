@@ -7,7 +7,6 @@ import (
 	"github.com/docker/go-connections/nat"
 	"github.com/go-pg/pg"
 	"github.com/testcontainers/testcontainers-go"
-	"github.com/testcontainers/testcontainers-go/wait"
 	"log"
 	"testing"
 	"time"

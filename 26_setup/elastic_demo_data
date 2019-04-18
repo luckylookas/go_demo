@@ -1,41 +1,196 @@
-PUT my_index
+DELETE person
+
+PUT person
 {
+  "settings": {
+    "analysis": {
+      "filter": {
+        "ngram_filter": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 3
+        }
+      },
+      "analyzer": {
+        "ngram_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "ngram_filter"
+          ]
+        },
+        "one_rune_ngram": {
+          "tokenizer": "one_rune_ngram_tokenizer"
+        }
+      },
+      "tokenizer": {
+        "one_rune_ngram_tokenizer": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 3,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      }
+    }
+  },
   "mappings": {
-    "_doc": {
+    "doc": {
       "properties": {
-        "city": {
+        "firstName": {
           "type": "text",
           "fields": {
             "keyword": {
-              "type":  "keyword"
+              "type": "keyword"
             },
-            "fts": {
+            "text": {
               "type": "text",
-              "analyzer": "english"
+              "analyzer": "one_rune_ngram"
+            },
+            "ngram": {
+              "type": "text",
+              "analyzer": "ngram_analyzer"
             }
           }
+        },
+        "lastName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "text": {
+              "type": "text",
+              "analyzer": "one_rune_ngram"
+            },
+            "ngram": {
+              "type": "text",
+              "analyzer": "ngram_analyzer"
+            }
+          }
+        },
+        "addresses": {
+          "include_in_root": true,
+          "type": "nested",
+          "properties": {
+            "street": {
+              "type": "text"
+            },
+            "zip": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                },
+                "text": {
+                  "type": "text",
+                  "analyzer": "one_rune_ngram"
+                },
+                "ngram": {
+                  "type": "text",
+                  "analyzer": "ngram_analyzer"
+                }
+              }
+            }
+          }
+        },
+        "birthDate": {
+          "type": "date"
         }
       }
     }
   }
 }
 
-PUT my_index/_doc/1
+POST person/doc/
 {
-  "city": "some kind of city with gardens, we will never know what that is about. Maybe it is some kind of tradition for them."
+  "firstName": "Lukas",
+  "lastName": "Noll",
+  "birthDate": "1990-04-04",
+  "addresses": [
+    {
+        "street": "Aderklaaerstraße",
+        "zip": "1210"
+    }
+  ]
 }
 
-GET my_index/_search
+POST person/doc/
+{
+  "firstName": "Ludmila",
+  "lastName": "Bistakova",
+  "birthDate": "1954-08-12",
+  "addresses": [
+    {
+        "street": "Feigengasse",
+        "zip": "1220"
+    }
+  ]
+}
+
+POST person/doc/
+{
+  "firstName": "Ludmilov",
+  "lastName": "Bistakov",
+  "birthDate": "1954-08-12",
+  "addresses": [
+    {
+        "street": "Feigengasse",
+        "zip": "1220"
+    }
+  ]
+}
+
+POST person/doc
+{
+  "firstName": "Norbert",
+  "lastName": "Schwarz",
+  "birthDate": "1989-11-01",
+  "addresses": [
+    {
+        "street": "Guglgasse",
+        "zip": "1210"
+    }
+  ]
+}
+
+GET person/_search
 {
   "query": {
-    "match": {
-      "city": {
-        "query":"garden"
-        , "fuzziness": 2
-      }
+    "bool": {
+      "must": [
+        {
+          "multi_match": {
+            "query": "Noll Lukas",
+            "fields": [
+              "lastName.keyword^10",
+              "lastName.text^2",
+              "firstName.keyword^10",
+              "firstName.text^1"
+            ],
+            "type": "cross_fields",
+            "operator": "and"
+          }
+        }
+      ],
+      "filter": [
+        {
+          "multi_match": {
+            "query": "Noll Lukas",
+            "fields": [
+              "lastName.keyword",
+              "lastName.text",
+              "firstName.keyword",
+              "firstName.text"
+            ],
+            "type": "cross_fields",
+            "operator": "and"
+          }
+        }
+      ]
     }
   }
 }
-
-
-

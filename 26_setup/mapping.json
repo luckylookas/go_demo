@@ -1,0 +1,77 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "one_rune_ngram": {
+          "tokenizer": "one_rune_ngram_tokenizer",
+          "filter": ["lowercase"]
+        }
+      },
+      "tokenizer": {
+        "one_rune_ngram_tokenizer": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 3,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "doc": {
+      "properties": {
+        "firstName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "text": {
+              "type": "text",
+              "analyzer": "one_rune_ngram"
+            }
+          }
+        },
+        "lastName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "text": {
+              "type": "text",
+              "analyzer": "one_rune_ngram"
+            }
+          }
+        },
+        "addresses": {
+          "include_in_root": true,
+          "type": "nested",
+          "properties": {
+            "street": {
+              "type": "text"
+            },
+            "zip": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                },
+                "text": {
+                  "type": "text",
+                  "analyzer": "one_rune_ngram"
+                }
+              }
+            }
+          }
+        },
+        "birthDate": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ require (
 	github.com/Microsoft/go-winio v0.4.12 // indirect
 	github.com/cenkalti/backoff v2.1.1+incompatible // indirect
 	github.com/containerd/continuity v0.0.0-20181203112020-004b46473808 // indirect
+	github.com/elastic/go-elasticsearch/v6 v6.0.0-20190409071335-689d698a888b
 	github.com/go-pg/pg v8.0.3+incompatible
 	github.com/gotestyourself/gotestyourself v2.2.0+incompatible // indirect
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
@@ -20,14 +21,12 @@ require (
 	github.com/sirupsen/logrus v1.4.1 // indirect
 	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/testcontainers/testcontainers-go v0.0.2
+	github.com/tidwall/gjson v1.2.1
+	github.com/tidwall/match v1.0.1 // indirect
+	github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65 // indirect
 	github.com/valyala/fasthttp v1.2.0
 	github.com/valyala/fasthttprouter v0.0.0-20160217050331-24073dd8f323
 	gopkg.in/ory-am/dockertest.v3 v3.3.4
 	gotest.tools v2.2.0+incompatible
 	mellium.im/sasl v0.2.1 // indirect
-	github.com/elastic/go-elasticsearch/v6 v6.0.0-20190409071335-689d698a888b
-	github.com/stretchr/testify v1.3.0 // indirect
-	github.com/tidwall/gjson v1.2.1
-	github.com/tidwall/match v1.0.1 // indirect
-	github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65 // indirect
 )

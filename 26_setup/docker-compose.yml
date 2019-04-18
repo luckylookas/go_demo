@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3'
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
@@ -24,7 +24,7 @@ services:
         max_attempts: 3
         window: 120s
     volumes:
-      - esdata1:/Users/lukasnoll/go/src/httpRouter/esData
+      - esdata1:/home/012873/go/src/go_demo/26_setup/esDataDir
     ports:
       - 9200:9200
       - 9300:9300
