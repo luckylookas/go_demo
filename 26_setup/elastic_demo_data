@@ -4,31 +4,17 @@ PUT person
 {
   "settings": {
     "analysis": {
-      "filter": {
-        "ngram_filter": {
-          "type": "ngram",
-          "min_gram": 1,
-          "max_gram": 3
-        }
-      },
       "analyzer": {
-        "ngram_analyzer": {
-          "type": "custom",
-          "tokenizer": "standard",
-          "filter": [
-            "lowercase",
-            "ngram_filter"
-          ]
-        },
         "one_rune_ngram": {
-          "tokenizer": "one_rune_ngram_tokenizer"
+          "tokenizer": "one_rune_ngram_tokenizer",
+          "filter": ["lowercase"]
         }
       },
       "tokenizer": {
         "one_rune_ngram_tokenizer": {
           "type": "ngram",
           "min_gram": 1,
-          "max_gram": 3,
+          "max_gram": 2,
           "token_chars": [
             "letter",
             "digit"
@@ -49,10 +35,6 @@ PUT person
             "text": {
               "type": "text",
               "analyzer": "one_rune_ngram"
-            },
-            "ngram": {
-              "type": "text",
-              "analyzer": "ngram_analyzer"
             }
           }
         },
@@ -65,10 +47,6 @@ PUT person
             "text": {
               "type": "text",
               "analyzer": "one_rune_ngram"
-            },
-            "ngram": {
-              "type": "text",
-              "analyzer": "ngram_analyzer"
             }
           }
         },
@@ -88,10 +66,6 @@ PUT person
                 "text": {
                   "type": "text",
                   "analyzer": "one_rune_ngram"
-                },
-                "ngram": {
-                  "type": "text",
-                  "analyzer": "ngram_analyzer"
                 }
               }
             }
@@ -133,8 +107,8 @@ POST person/doc/
 
 POST person/doc/
 {
-  "firstName": "Ludmilov",
-  "lastName": "Bistakov",
+  "firstName": "Ludmilb",
+  "lastName": "Bistakovb",
   "birthDate": "1954-08-12",
   "addresses": [
     {
@@ -144,32 +118,50 @@ POST person/doc/
   ]
 }
 
-POST person/doc
+POST person/doc/
 {
-  "firstName": "Norbert",
-  "lastName": "Schwarz",
-  "birthDate": "1989-11-01",
+  "firstName": "Ludmilc",
+  "lastName": "Bistakovc",
+  "birthDate": "1954-08-12",
   "addresses": [
     {
-        "street": "Guglgasse",
-        "zip": "1210"
+        "street": "Feigengasse",
+        "zip": "1220"
     }
   ]
 }
 
+POST person/doc/
+{
+  "firstName": "Ludmilo",
+  "lastName": "Bistakovo",
+  "birthDate": "1954-08-12",
+  "addresses": [
+    {
+        "street": "Feigengasse",
+        "zip": "1220"
+    }
+  ]
+}
+
+
+
 GET person/_search
 {
+  "explain": false,
   "query": {
     "bool": {
       "must": [
         {
           "multi_match": {
-            "query": "Noll Lukas",
+            "query": "lu 1220",
             "fields": [
               "lastName.keyword^10",
-              "lastName.text^2",
+              "lastName.text^5",
               "firstName.keyword^10",
-              "firstName.text^1"
+              "firstName.text",
+              "addresses.zip.text^5",
+              "addresses.zip.keyword^10"
             ],
             "type": "cross_fields",
             "operator": "and"
@@ -179,12 +171,14 @@ GET person/_search
       "filter": [
         {
           "multi_match": {
-            "query": "Noll Lukas",
+            "query": "lu 1220",
             "fields": [
               "lastName.keyword",
               "lastName.text",
               "firstName.keyword",
-              "firstName.text"
+              "firstName.text",
+              "addresses.zip.text",
+              "addresses.zip.keyword"
             ],
             "type": "cross_fields",
             "operator": "and"

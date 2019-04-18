@@ -1,0 +1,673 @@
+{
+  "_explanation": {
+    "value": 4.6980553,
+    "description": "sum of:",
+    "details": [
+      {
+        "value": 4.6980553,
+        "description": "sum of:",
+        "details": [
+          {
+            "value": 4.6980553,
+            "description": "max of:",
+            "details": [
+              {
+                "value": 4.6980553,
+                "description": "sum of:",
+                "details": [
+                  {
+                    "value": 0.18232156,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.18232156,
+                        "description": "weight(firstName.text:u in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.18232156,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 0.18232156,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 2.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 2.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 1.4487071,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 1.4487071,
+                        "description": "weight(addresses.zip.text:2 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 1.4487071,
+                            "description": "score(doc=1,freq=2.0 = termFreq=2.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 10.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.375,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 2.0,
+                                    "description": "termFreq=2.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.5268026,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.5268026,
+                        "description": "weight(addresses.zip.text:20 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.5268026,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 5.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.25069216,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.25069216,
+                        "description": "weight(firstName.text:l in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.25069216,
+                            "description": "score(doc=1,freq=2.0 = termFreq=2.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 0.18232156,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 2.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 2.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.375,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 2.0,
+                                    "description": "termFreq=2.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.5268026,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.5268026,
+                        "description": "weight(addresses.zip.text:22 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.5268026,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 5.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.18232156,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.18232156,
+                        "description": "weight(firstName.text:lu in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.18232156,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 0.18232156,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 2.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 2.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 13.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.5268026,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.5268026,
+                        "description": "weight(addresses.zip.text:1 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.5268026,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 5.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.5268026,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.5268026,
+                        "description": "weight(addresses.zip.text:12 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.5268026,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 5.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "value": 0.5268026,
+                    "description": "max of:",
+                    "details": [
+                      {
+                        "value": 0.5268026,
+                        "description": "weight(addresses.zip.text:0 in 1) [PerFieldSimilarity], result of:",
+                        "details": [
+                          {
+                            "value": 0.5268026,
+                            "description": "score(doc=1,freq=1.0 = termFreq=1.0\n), product of:",
+                            "details": [
+                              {
+                                "value": 5.0,
+                                "description": "boost",
+                                "details": []
+                              },
+                              {
+                                "value": 0.105360515,
+                                "description": "idf, computed as log(1 + (docCount - docFreq + 0.5) / (docFreq + 0.5)) from:",
+                                "details": [
+                                  {
+                                    "value": 4.0,
+                                    "description": "docFreq",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 4.0,
+                                    "description": "docCount",
+                                    "details": []
+                                  }
+                                ]
+                              },
+                              {
+                                "value": 1.0,
+                                "description": "tfNorm, computed as (freq * (k1 + 1)) / (freq + k1 * (1 - b + b * fieldLength / avgFieldLength)) from:",
+                                "details": [
+                                  {
+                                    "value": 1.0,
+                                    "description": "termFreq=1.0",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 1.2,
+                                    "description": "parameter k1",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 0.75,
+                                    "description": "parameter b",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "avgFieldLength",
+                                    "details": []
+                                  },
+                                  {
+                                    "value": 7.0,
+                                    "description": "fieldLength",
+                                    "details": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "value": 0.0,
+            "description": "match on required clause, product of:",
+            "details": [
+              {
+                "value": 0.0,
+                "description": "# clause",
+                "details": []
+              },
+              {
+                "value": 1.0,
+                "description": "((+(addresses.zip.text:l | firstName.text:l | lastName.text:l) +(addresses.zip.text:lu | firstName.text:lu | lastName.text:lu) +(addresses.zip.text:22 | firstName.text:22 | lastName.text:22) +(addresses.zip.text:1 | firstName.text:1 | lastName.text:1) +((addresses.zip.text:2 | firstName.text:2 | lastName.text:2))^2.0 +(addresses.zip.text:20 | firstName.text:20 | lastName.text:20) +(addresses.zip.text:u | firstName.text:u | lastName.text:u) +(addresses.zip.text:12 | firstName.text:12 | lastName.text:12) +(addresses.zip.text:0 | firstName.text:0 | lastName.text:0)) | (lastName.keyword:lu 1220 | addresses.zip.keyword:lu 1220 | firstName.keyword:lu 1220))",
+                "details": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "value": 0.0,
+        "description": "match on required clause, product of:",
+        "details": [
+          {
+            "value": 0.0,
+            "description": "# clause",
+            "details": []
+          },
+          {
+            "value": 1.0,
+            "description": "DocValuesFieldExistsQuery [field=_primary_term]",
+            "details": []
+          }
+        ]
+      }
+    ]
+  }
+}
