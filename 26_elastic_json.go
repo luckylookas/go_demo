@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/elastic/go-elasticsearch/v6"
 	"github.com/elastic/go-elasticsearch/v6/esapi"
@@ -35,6 +36,18 @@ type Result struct {
 }
 
 
+type Person struct {
+	FirstName string `json:"firstName"`
+	LastName string `json:"lastName"`
+	BirthDate string `json:"brithDate"`
+	Addresses []Address `json:"addresses"`
+}
+
+type Address struct {
+	Street string `json:"street"`
+	Zip string		`json:"zip"`
+}
+
 /*
 tuning
 https://github.com/elastic/go-elasticsearch/blob/master/_examples/fasthttp/fasthttp.go
@@ -53,16 +66,28 @@ func main() {
 	check(err)
 
 
-	_, err =es.Indices.Create("my_index")
-	check(err)
+	p := Person{
+		LastName: "Bistakova",
+		FirstName:"Ludmila",
+		BirthDate: "1958-01-01",
+		Addresses: []Address{{Street: "Bratislavastreet", Zip: "1000"}},
+	}
+
+	buf, _ := json.Marshal(p)
+
+	fmt.Println(string(buf))
+
+	return
 
 	req := esapi.IndexRequest{
-		DocumentType: "_doc",
-		Index:        "my_index",
-		DocumentID:   "at_vienna",
-		Body:         strings.NewReader(`{"city" : "If you ever visit Vienna, make sure to visit Schoenbrunn Palace and the surrounding gardens."}`),
+		DocumentType: "doc",
+		Index:        "person",
+		Body:         strings.NewReader(string(buf)),
 		Refresh:      "true",
 	}
+
+
+
 	res, err := req.Do(context.Background(), es)
 	check(err)
 	res.Body.Close()
