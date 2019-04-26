@@ -5,16 +5,42 @@ PUT person
   "settings": {
     "analysis": {
       "analyzer": {
-        "one_rune_ngram": {
-          "tokenizer": "one_rune_ngram_tokenizer",
+        "four_edge_ngram": {
+          "tokenizer": "four_edge_ngram_tokenizer",
+          "filter": ["lowercase"]
+        },
+        "three_edge_ngram": {
+          "tokenizer": "three_edge_ngram_tokenizer",
+          "filter": ["lowercase"]
+        },
+        "two_edge_ngram": {
+          "tokenizer": "two_edge_ngram_tokenizer",
           "filter": ["lowercase"]
         }
       },
       "tokenizer": {
-        "one_rune_ngram_tokenizer": {
-          "type": "ngram",
-          "min_gram": 1,
-          "max_gram": 2,
+        "two_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 2,
+          "max_gram": 20,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        },
+        "three_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 3,
+          "max_gram": 20,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        },
+         "four_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 4,
+          "max_gram": 20,
           "token_chars": [
             "letter",
             "digit"
@@ -27,6 +53,7 @@ PUT person
     "doc": {
       "properties": {
         "firstName": {
+          "copy_to": "all",
           "type": "text",
           "fields": {
             "keyword": {
@@ -34,11 +61,16 @@ PUT person
             },
             "text": {
               "type": "text",
-              "analyzer": "one_rune_ngram"
+              "analyzer": "two_edge_ngram"
             }
           }
         },
+        "all": {
+          "type": "text",
+          "analyzer": "two_edge_ngram"
+        },
         "lastName": {
+          "copy_to": "all",
           "type": "text",
           "fields": {
             "keyword": {
@@ -46,7 +78,7 @@ PUT person
             },
             "text": {
               "type": "text",
-              "analyzer": "one_rune_ngram"
+              "analyzer": "two_edge_ngram"
             }
           }
         },
@@ -54,10 +86,8 @@ PUT person
           "include_in_root": true,
           "type": "nested",
           "properties": {
-            "street": {
-              "type": "text"
-            },
-            "zip": {
+              "street": {
+              "copy_to": "all",
               "type": "text",
               "fields": {
                 "keyword": {
@@ -65,14 +95,55 @@ PUT person
                 },
                 "text": {
                   "type": "text",
-                  "analyzer": "one_rune_ngram"
+                  "analyzer": "two_edge_ngram"
+                }
+              }
+            },
+            "zip": {
+              "copy_to": "all",
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                },
+                "text": {
+                  "type": "text",
+                  "analyzer": "three_edge_ngram"
                 }
               }
             }
           }
         },
         "birthDate": {
-          "type": "date"
+          "type": "date",
+          "format": "yyyy-MM-dd"
+
+        },
+        "birthYear": {
+          "type": "text",
+          "copy_to": "all",
+          "analyzer": "three_edge_ngram"
+        },
+        "accounts": {
+          "type": "text"
+        },
+        "partner_number": {
+          "copy_to": "all",
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "three": {
+              "type": "text",
+              "analyzer": "three_edge_ngram"
+            },
+            "four": {
+              "type": "text",
+              "analyzer": "four_edge_ngram"
+            }
+          }
+
         }
       }
     }
@@ -81,110 +152,157 @@ PUT person
 
 POST person/doc/
 {
-  "firstName": "Lukas",
-  "lastName": "Noll",
+  "firstName": "Wolfhart",
+  "lastName": "Bauer",
   "birthDate": "1990-04-04",
+  "addresses": [
+    {
+        "street": "Wassermanngasse",
+        "zip": "1210"
+    }
+  ],
+  "accounts": [
+    "1", "2"
+  ],
+  "partner_number": "121001"
+}
+
+POST person/doc/
+{
+  "firstName": "Wolfgang",
+  "lastName": "Bauer",
+  "birthDate": "1995-01-11",
   "addresses": [
     {
         "street": "Aderklaaerstraße",
         "zip": "1210"
     }
-  ]
+  ],
+  "accounts": [
+    "1", "2"
+  ],
+  "partner_number": "121002"
 }
 
 POST person/doc/
 {
-  "firstName": "Ludmila",
-  "lastName": "Bistakova",
-  "birthDate": "1954-08-12",
+  "firstName": "Wolfram",
+  "lastName": "Bauer",
+  "birthDate": "1985-01-11",
   "addresses": [
     {
-        "street": "Feigengasse",
+        "street": "Pelargoneinweg",
         "zip": "1220"
     }
-  ]
+  ],
+  "accounts": [
+    "1", "2"
+  ],
+  "partner_number": "121003"
 }
 
 POST person/doc/
 {
-  "firstName": "Ludmilb",
-  "lastName": "Bistakovb",
-  "birthDate": "1954-08-12",
+  "firstName": "Dieter",
+  "lastName": "Bauer",
+  "birthDate": "1985-01-11",
   "addresses": [
     {
-        "street": "Feigengasse",
+        "street": "Wolfsweg",
         "zip": "1220"
     }
-  ]
+  ],
+  "accounts": [
+    "1", "2"
+  ],
+  "partner_number": "122001"
 }
-
-POST person/doc/
-{
-  "firstName": "Ludmilc",
-  "lastName": "Bistakovc",
-  "birthDate": "1954-08-12",
-  "addresses": [
-    {
-        "street": "Feigengasse",
-        "zip": "1220"
-    }
-  ]
-}
-
-POST person/doc/
-{
-  "firstName": "Ludmilo",
-  "lastName": "Bistakovo",
-  "birthDate": "1954-08-12",
-  "addresses": [
-    {
-        "street": "Feigengasse",
-        "zip": "1220"
-    }
-  ]
-}
-
-
 
 GET person/_search
 {
-  "explain": false,
   "query": {
     "bool": {
-      "must": [
+      "filter": [
         {
-          "multi_match": {
-            "query": "lu 1220",
-            "fields": [
-              "lastName.keyword^10",
-              "lastName.text^5",
-              "firstName.keyword^10",
-              "firstName.text",
-              "addresses.zip.text^5",
-              "addresses.zip.keyword^10"
-            ],
-            "type": "cross_fields",
-            "operator": "and"
+          "match": {
+            "all": {
+              "query": "1220 Pelargoneinweg",
+              "operator": "and"
+            }
+          }
+        },
+        {
+          "terms": {
+            "accounts": ["1", "3"]
           }
         }
       ],
-      "filter": [
+      "should": [
         {
           "multi_match": {
-            "query": "lu 1220",
+            "query": "Wolf 1220",
             "fields": [
-              "lastName.keyword",
-              "lastName.text",
-              "firstName.keyword",
+              "partner_number.three",
+              "partner_number.four^750",
+              "partner_number.keyword^1000",
+              "lastName.keyword^500",
+              "firstName.keyword^500",
               "firstName.text",
-              "addresses.zip.text",
-              "addresses.zip.keyword"
+              "lastName.text^250",
+              "addresses.zip.text^500"
             ],
             "type": "cross_fields",
-            "operator": "and"
+            "operator": "or"
           }
         }
       ]
     }
   }
+}
+
+GET person/_validate/query?explain=true
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "match": {
+            "all": {
+              "query": "Baue 1210",
+              "operator": "and"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+GET person/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "multi_match": {
+            "query": "olf 1210",
+            "fields": [
+              "firstName.text",
+              "addresses.zip.text"
+            ]
+            ,"type": "cross_fields"
+            ,"operator": "or"
+            ,"minimum_should_match": "100%"
+          }
+        }
+      ]
+    }
+  }
+}
+
+POST person/_analyze
+{
+  "analyzer": "one_rune_edge_ngram",
+  "text": "Abcdefghijklmnopq"
 }

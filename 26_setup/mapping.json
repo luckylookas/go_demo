@@ -2,16 +2,42 @@
   "settings": {
     "analysis": {
       "analyzer": {
-        "one_rune_ngram": {
-          "tokenizer": "one_rune_ngram_tokenizer",
+        "four_edge_ngram": {
+          "tokenizer": "four_edge_ngram_tokenizer",
+          "filter": ["lowercase"]
+        },
+        "three_edge_ngram": {
+          "tokenizer": "three_edge_ngram_tokenizer",
+          "filter": ["lowercase"]
+        },
+        "two_edge_ngram": {
+          "tokenizer": "two_edge_ngram_tokenizer",
           "filter": ["lowercase"]
         }
       },
       "tokenizer": {
-        "one_rune_ngram_tokenizer": {
-          "type": "ngram",
-          "min_gram": 1,
-          "max_gram": 2,
+        "two_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 2,
+          "max_gram": 20,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        },
+        "three_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 3,
+          "max_gram": 20,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        },
+        "four_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 4,
+          "max_gram": 20,
           "token_chars": [
             "letter",
             "digit"
@@ -24,6 +50,7 @@
     "doc": {
       "properties": {
         "firstName": {
+          "copy_to": "all",
           "type": "text",
           "fields": {
             "keyword": {
@@ -31,11 +58,16 @@
             },
             "text": {
               "type": "text",
-              "analyzer": "one_rune_ngram"
+              "analyzer": "two_edge_ngram"
             }
           }
         },
+        "all": {
+          "type": "text",
+          "analyzer": "two_edge_ngram"
+        },
         "lastName": {
+          "copy_to": "all",
           "type": "text",
           "fields": {
             "keyword": {
@@ -43,7 +75,7 @@
             },
             "text": {
               "type": "text",
-              "analyzer": "one_rune_ngram"
+              "analyzer": "two_edge_ngram"
             }
           }
         },
@@ -52,9 +84,7 @@
           "type": "nested",
           "properties": {
             "street": {
-              "type": "text"
-            },
-            "zip": {
+              "copy_to": "all",
               "type": "text",
               "fields": {
                 "keyword": {
@@ -62,14 +92,55 @@
                 },
                 "text": {
                   "type": "text",
-                  "analyzer": "one_rune_ngram"
+                  "analyzer": "two_edge_ngram"
+                }
+              }
+            },
+            "zip": {
+              "copy_to": "all",
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                },
+                "text": {
+                  "type": "text",
+                  "analyzer": "three_edge_ngram"
                 }
               }
             }
           }
         },
         "birthDate": {
-          "type": "date"
+          "type": "date",
+          "format": "yyyy-MM-dd"
+
+        },
+        "birthYear": {
+          "type": "text",
+          "copy_to": "all",
+          "analyzer": "three_edge_ngram"
+        },
+        "accounts": {
+          "type": "text"
+        },
+        "partner_number": {
+          "copy_to": "all",
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword"
+            },
+            "three": {
+              "type": "text",
+              "analyzer": "three_edge_ngram"
+            },
+            "four": {
+              "type": "text",
+              "analyzer": "four_edge_ngram"
+            }
+          }
+
         }
       }
     }
